@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fade In Text Effect</title>
+    <style>
+        body {
+            background: #222;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .fade-in-text {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeInPop 2s ease-out forwards;
+            font-size: 2.5rem;
+            font-family: Arial, sans-serif;
+            letter-spacing: 2px;
+        }
+        @keyframes fadeInPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            60% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fade-in-text">Welcome to My Portfolio</div>
+</body>
+</html>
