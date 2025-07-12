@@ -132,19 +132,21 @@
                 const imageTop = 120 - (imageScrollPercent * 70); // From 120vh to 50vh
                 const overlayOpacity = 1 - imageScrollPercent; // From 1 to 0
                 
-                // Get current magnify intensity for scale
-                const magnifyIntensity = parseFloat(contentImage.style.getPropertyValue('--magnify-intensity')) || 0;
-                const scale = 1 + (magnifyIntensity * 0.3); // Subtle scale from 1 to 1.3
+                // Position all elements the same way
+                const transform = `translate(-50%, -50%) rotateZ(270deg)`;
                 
                 contentImage.style.top = `${imageTop}vh`;
-                contentImage.style.transform = `translate(-50%, -50%) rotateZ(270deg) scale(${scale})`;
+                contentImage.style.transform = transform;
                 
                 imageOverlay.style.top = `${imageTop}vh`;
                 imageOverlay.style.transform = `translate(-50%, -50%)`;
                 imageOverlay.style.opacity = overlayOpacity;
             } else {
+                // Reset all elements to off-screen position
+                const offScreenTransform = 'translateX(-50%) rotateZ(270deg)';
+                
                 contentImage.style.top = '120vh';
-                contentImage.style.transform = 'translateX(-50%) rotateZ(270deg)';
+                contentImage.style.transform = offScreenTransform;
                 
                 imageOverlay.style.top = '120vh';
                 imageOverlay.style.transform = 'translateX(-50%)';
