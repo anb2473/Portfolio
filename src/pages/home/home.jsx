@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as THREE from "three";
 import "./Home.css";
-import Bio from "./bio.jsx";
+import Bio from "./Bio.jsx";
 
 function Home() {
   const mountRef = useRef(null);
