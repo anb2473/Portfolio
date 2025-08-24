@@ -61,7 +61,7 @@ const Bio = () => {
     {
         emoji: '🧠',
         name: 'Skill Bytes',
-        description: 'Skill Bytes, a platform to prevent deterioration of programming skills from AI.',
+        description: 'A platform to prevent deterioration of programming skills from AI.',
         url: 'https://skill-bytes.netlify.app',
         status: 'Active'
     },
