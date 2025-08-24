@@ -44,6 +44,17 @@
   will-change: transform, filter, opacity; /* Optimize for animations */
 }
 
+.bio-container {
+  position: relative;
+  width: 100%;
+  backdrop-filter: blur(3px);
+  padding: 4rem 2rem;
+  z-index: 2;
+  color: #fff;
+  mask-image: linear-gradient(to bottom, transparent, black 100px); /* Adjust '100px' for fade length */
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 100px); /* For WebKit browsers */
+}
+
 .home-content-left h1 {
   font-size: 4rem;
   font-weight: bold;

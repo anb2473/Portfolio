@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as THREE from "three";
 import "./Home.css";
+import Bio from "./bio.jsx";
 
 function Home() {
   const mountRef = useRef(null);
@@ -199,6 +200,9 @@ function Home() {
           <h2>I'm Austin</h2>
           <Link to="/learnmore" className="get-started-button">Learn More</Link>
         </div>
+      </div>
+      <div className="bio-container">
+        <Bio />
       </div>
     </div>
   );

@@ -3,6 +3,11 @@ import * as THREE from 'three';
 import discussionPoints from '../../data/discussionPoints';
 import './LearnMore.css';
 
+// Helper component to render HTML content safely
+const HtmlContent = ({ content }) => {
+  return <div dangerouslySetInnerHTML={{ __html: content }} />;
+};
+
 const LearnMore = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef([]);
@@ -187,12 +192,16 @@ const LearnMore = () => {
     };
   }, []);
 
-  // Scroll effect
+  // Scroll effect with animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            // Add visible class for animation
+            entry.target.classList.add('visible');
+            
+            // Update active index for progress bar
             const index = sectionRefs.current.findIndex(ref => ref === entry.target);
             if (index !== -1) {
               setActiveIndex(index);
@@ -201,10 +210,12 @@ const LearnMore = () => {
         });
       },
       {
-        threshold: 0.5,
+        threshold: 0.1, // Lower threshold for earlier trigger
+        rootMargin: '0px 0px -100px 0px' // Start animation slightly before section is in view
       }
     );
 
+    // Observe all sections
     sectionRefs.current.forEach((section) => {
       if (section) observer.observe(section);
     });
@@ -247,11 +258,18 @@ const LearnMore = () => {
             <section
                 key={point.id}
                 ref={el => sectionRefs.current[index] = el}
-                className={`section ${index === activeIndex ? 'active' : ''}`}
+                className={`section ${index === 0 ? 'visible' : ''}`}
+                style={{
+                  transitionDelay: `${index * 0.1}s`
+                }}
             >
                 <div className="content">
-                <h2>{point.title}</h2>
-                <p>{point.content}</p>
+                  <div className="section-card">
+                    <h2>{point.title}</h2>
+                    <div className="content-text">
+                      <HtmlContent content={point.content.replace(/\n/g, '')} />
+                    </div>
+                  </div>
                 </div>
                 {point.image && (
                 <div className="image-container">

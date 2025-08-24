@@ -178,6 +178,7 @@
     min-height: calc(100vh + 200px) !important;
     position: relative;
     top: -200px;
+    background: transparent;
   }
   
   /* Force the first section's content to the very top */
@@ -194,10 +195,47 @@
     padding: 40px 0 40px 40px;
   }
   
-  .section {
+  /* Section with animation */
+.section {
     min-height: 100vh;
     display: flex;
+    position: relative;
+    padding: 40px 0;
     flex-direction: column;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    background: transparent;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Card styling */
+.section-card {
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    padding: 2.5rem;
+    margin: 1.5rem 0;
+    transform: scale(0.98);
+    transition: all 0.3s ease;
+}
+
+.section-card:hover {
+    transform: scale(1);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Content within card */
+.content {
+    position: relative;
+    z-index: 2;
     justify-content: center;
     align-items: center;
     padding: 2rem;
@@ -221,7 +259,25 @@
   .section h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: #2c3e50;
+    color: #d1d1d1;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+  }
+
+  .section h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #d1d1d1;
+    transition: width 1.0s ease-out;
+  }
+
+  .section.visible h2::after {
+    width: 100%;
   }
   
   .section p {
