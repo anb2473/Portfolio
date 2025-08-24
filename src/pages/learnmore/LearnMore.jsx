@@ -89,31 +89,39 @@ const LearnMore = () => {
         const v = velocities[i];
         let move = new THREE.Vector3();
 
-        // Flocking behavior
         for (let j = 0; j < NUM_POINTS; j++) {
           if (i === j) continue;
-          const p2 = points[j];
-          const dist = p.distanceTo(p2);
-          
+          const other = points[j];
+          const dir = new THREE.Vector3().subVectors(other, p);
+          const dist = dir.length();
+
           if (dist < MIN_DIST) {
-            // Repulsion
-            const repulse = new THREE.Vector3()
-              .subVectors(p, p2)
-              .normalize()
-              .multiplyScalar(REPULSION / (dist * dist + 0.0001));
-            move.add(repulse);
+            // repulsion: stronger if too close
+            dir.normalize().multiplyScalar(-REPULSION / dist);
+            move.add(dir);
           } else if (dist < MAX_DIST) {
-            // Attraction
-            const attract = new THREE.Vector3()
-              .subVectors(p2, p)
-              .normalize()
-              .multiplyScalar(ATTRACTION * dist);
-            move.add(attract);
+            // attraction: gentle
+            dir.normalize().multiplyScalar(ATTRACTION);
+            move.add(dir);
           }
         }
 
-        // Update velocity and position
-        v.add(move).multiplyScalar(DAMPING);
+        // gentle centering force to keep swarm in view
+        move.add(p.clone().multiplyScalar(-CENTER_FORCE));
+
+        // Add random wander
+        const wander = new THREE.Vector3(
+          (Math.random() - 0.5) * 0.1,
+          (Math.random() - 0.5) * 0.1,
+          (Math.random() - 0.5) * 0.1
+        );
+        move.add(wander);
+
+        // update velocity
+        v.add(move);
+        v.multiplyScalar(DAMPING);
+
+        // update position
         p.add(v);
       }
 
@@ -148,6 +156,12 @@ const LearnMore = () => {
     let animationFrameId;
     const animate = () => {
       updatePoints();
+      
+      // Rotate camera slowly for 3D feel (same as home.jsx)
+      camera.position.x = Math.sin(Date.now() * 0.0002) * 120;
+      camera.position.z = Math.cos(Date.now() * 0.0002) * 120;
+      camera.lookAt(0, 0, 0);
+      
       renderer.render(scene, camera);
       animationFrameId = requestAnimationFrame(animate);
     };
