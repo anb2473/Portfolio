@@ -1,65 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Portfolio</title>
-    <style>
-        body {
-            background: #0b0b0b;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .text-container {
-            text-align: center;
-            line-height: 1.5;
-        }
-        .fade-in-line {
-            opacity: 0;
-            transform: translateY(30px);
-            filter: blur(10px);
-            animation: fadeInLine 1.5s ease-out forwards;
-            font-size: 4rem;
-            margin: 0.5rem 0;
-            display: block;
-        }
-        .fade-in-line:nth-child(1) { animation-delay: 0s; }
-        .fade-in-line:nth-child(2) { animation-delay: 0.5s; }
-        
-        @keyframes fadeInLine {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-                filter: blur(10px);
-            }
-            50% {
-                opacity: 0.7;
-                filter: blur(5px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-                filter: blur(0px);
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="text-container">
-        <span class="fade-in-line">Welcome</span>
-        <span class="fade-in-line">To the new age of technology and art</span>
-    </div>
-
-    <script>
-        // Redirect to fall.html after the animation completes
-        // Total animation time: 0.5s delay + 1.5s duration = 2s
-        setTimeout(() => {
-            window.location.href = 'fall.html';
-        }, 2500); // Adding 0.5s extra for smooth transition
-    </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Austin Blass</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

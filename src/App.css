@@ -1,0 +1,223 @@
+/* Dark Mode Only */
+:root {
+  --bg: #000000;
+  --text: #eaeaea;
+  --link: #cccccc;
+  --link-hover: #ffffff;
+  --border: #333333;
+  --accent: #ffffff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+  height: 80px;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Mobile menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--text);
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 2rem 1.5rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .nav-links.mobile-open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .nav-links li {
+    width: 100%;
+    max-width: 280px;
+    overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+  }
+
+  .nav-links.mobile-open li {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Staggered animation for menu items */
+  .nav-links.mobile-open li:nth-child(1) { transition-delay: 0.1s; }
+  .nav-links.mobile-open li:nth-child(2) { transition-delay: 0.15s; }
+  .nav-links.mobile-open li:nth-child(3) { transition-delay: 0.2s; }
+  .nav-links.mobile-open li:nth-child(4) { transition-delay: 0.25s; }
+
+  .nav-links a {
+    display: block;
+    padding: 1.25rem 2rem;
+    text-align: center;
+    color: var(--text);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: none;
+  }
+
+  .nav-links a:active {
+    background: rgba(255, 255, 255, 0.05);
+    transform: scale(0.98);
+  }
+
+  .nav-links .learnmore-link {
+    background: var(--accent);
+    color: white !important;
+    border-radius: 12px;
+    margin: 1rem auto 0;
+    max-width: 280px;
+    font-weight: 600;
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    padding: 1rem 2rem;
+  }
+
+  .nav-links .learnmore-link:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Links */
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  color: var(--link);
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--link-hover);
+}
+
+/* Line effect for desktop only */
+@media (min-width: 769px) {
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+}
+
+/* Sign Up Link */
+.nav-links .learnmore-link {
+  background-color: var(--accent);
+  color: var(--bg) !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-links .learnmore-link::after {
+  display: none;
+}
+
+.nav-links .learnmore-link:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-1px);
+  color: var(--bg) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links a:hover {
+  color: var(--link-hover);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
