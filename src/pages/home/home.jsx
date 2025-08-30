@@ -199,6 +199,7 @@ function Home() {
           <h1>Hello,</h1>
           <h2>I'm Austin</h2>
           <Link to="/learnmore" className="get-started-button">Learn More</Link>
+          <p>(Scroll Down)</p>
         </div>
       </div>
       <div className="bio-container">

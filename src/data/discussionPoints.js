@@ -28,7 +28,7 @@ const discussionPoints = [
     id: 4,
     title: "Congressional App Challenge",
     content: `Developed Local Lens Reporting, a web application to help fight news desserts by bringing 
-            journalists directly to stories in their regions, for the Congressional App Challlenge.`,
+            journalists directly to stories in their regions, for the Congressional App Challlenge. (Click <a href="https://www.youtube.com/watch?v=Vv4OgvsXgV0">here</a> for YouTube video)`,
     image: "image1.jpg"
   }
 ];
