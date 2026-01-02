@@ -45,6 +45,13 @@ const Bio = () => {
       status: 'In Progress'
     },
     {
+      emoji: '📁',
+      name: 'FTP Server',
+      description: 'An FTP server for self hosted cloud storage',
+      url: 'https://github.com/anb2473/ftp-server',
+      status: 'Active'
+    },
+    {
       emoji: '🤖',
       name: 'Kalshi Autonomous Trader',
       description: 'An autonomous trader for kalshi',
