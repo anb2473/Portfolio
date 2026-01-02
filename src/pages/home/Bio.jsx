@@ -72,6 +72,18 @@ const Bio = () => {
         url: 'https://skill-bytes.netlify.app',
         status: 'Active'
     },
+    {
+      emoji: '💬',
+      name: 'Stream Interpreter',
+      description: 'An interpreter for a dynamically typed, functional programming language.',
+      url: 'https://github.com/anb2473/stream-interpreter'
+    },
+    {
+      emoji: '💬',
+      name: 'Luma Interpreter',
+      description: 'An interpeter for a multi-paradigm programming language.',
+      url: 'https://github.com/anb2473/luma'
+    }
   ];
 
   return (
