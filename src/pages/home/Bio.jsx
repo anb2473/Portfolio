@@ -73,6 +73,13 @@ const Bio = () => {
         status: 'Active'
     },
     {
+        emoji: '📁',
+        name: 'FTP Server',
+        description: 'An open source tool to self host your own personal file storage cloud.',
+        url: 'https://github.com/anb2473/ftp-server',
+        status: 'Active'
+    },
+    {
       emoji: '💬',
       name: 'Stream Interpreter',
       description: 'An interpreter for a dynamically typed, functional programming language.',
