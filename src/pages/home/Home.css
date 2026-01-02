@@ -88,3 +88,7 @@
   transform: scale(1.05);
   text-decoration: none;
 }
+
+.home-content-left p {
+  margin-top: 5px;
+}
